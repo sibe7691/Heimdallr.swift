@@ -68,7 +68,7 @@ extension OAuthAccessToken {
             return nil
         }
 
-        let expiresAt = NSDate(timeIntervalSince1970: (json["expires_in"] as? NSTimeInterval)!)
+        let expiresAt = NSDate().dateByAddingTimeInterval(json["expires_in"] as! NSTimeInterval)
         let refreshToken = json["refresh_token"] as? String
 
         return OAuthAccessToken(accessToken: accessToken, tokenType: tokenType,
